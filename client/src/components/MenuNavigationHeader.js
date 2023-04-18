@@ -1,13 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 const MenuNavigationHeader = () => {
     return (
         <div>
-            <NavLink to="/">
-            </NavLink>
+            <div className='headerNavigation'>
+                <h1> Gestus 2000 </h1>
+                <button className='loginButton' onClick={() => window.location.href = '/login'}> Login </button>
+            </div>
             <div className="navigation">
                 <ul>
+                    <NavLink to="/">
+                        <li> Acueil </li>
+                    </NavLink>
                     <NavLink to="/joueurs">
                         <li> Joueurs </li>
                     </NavLink>
@@ -17,7 +23,6 @@ const MenuNavigationHeader = () => {
                     <NavLink to="/statistiques">
                         <li> Statistiques </li>
                     </NavLink>
-                    <button onClick={() => window.location.href = '/login'}> Login </button>
                 </ul>
             </div>
         </div>

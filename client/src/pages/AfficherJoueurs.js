@@ -1,5 +1,6 @@
 import React from 'react';
 import MenuNavigationHeader from '../components/MenuNavigationHeader';
+import TableauJoueurs from '../components/TableauJoueurs';
 
 const AfficherJoueurs = () => {
     return (
@@ -8,7 +9,7 @@ const AfficherJoueurs = () => {
                 <MenuNavigationHeader />
             </header>
             <main>
-
+                <TableauJoueurs />
             </main>
             <footer>
 

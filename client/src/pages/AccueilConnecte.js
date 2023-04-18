@@ -1,5 +1,7 @@
 import React from 'react';
 import MenuNavigationHeader from '../components/MenuNavigationHeader';
+import AccueilMainContent from '../components/AccueilMainContent';
+import FormAjouterJoueur from '../components/FormAjouterJoueur';
 
 const AccueilConnecte = () => {
     return (
@@ -8,7 +10,8 @@ const AccueilConnecte = () => {
                 <MenuNavigationHeader />
             </header>
             <main>
-
+                <AccueilMainContent />
+                <FormAjouterJoueur />
             </main>
             <footer>
 
