@@ -11,7 +11,6 @@ const AccueilConnecte = () => {
             </header>
             <main>
                 <AccueilMainContent />
-                <FormAjouterJoueur />
             </main>
             <footer>
 

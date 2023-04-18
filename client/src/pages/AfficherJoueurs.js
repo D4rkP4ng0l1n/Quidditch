@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuNavigationHeader from '../components/MenuNavigationHeader';
 import TableauJoueurs from '../components/TableauJoueurs';
+import SupprimerJoueur from '../components/SupprimerJoueur';
 
 const AfficherJoueurs = () => {
     return (
@@ -10,6 +11,8 @@ const AfficherJoueurs = () => {
             </header>
             <main>
                 <TableauJoueurs />
+                {/* <FormAjouterJoueur /> */}
+                <SupprimerJoueur />
             </main>
             <footer>
 

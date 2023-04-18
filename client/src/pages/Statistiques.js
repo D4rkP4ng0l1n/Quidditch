@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuNavigationHeader from '../components/MenuNavigationHeader';
 import StatistiquesGloables from '../components/StatistiquesGloables';
-import TableauJoueurs from '../components/TableauJoueurs';
+import TableauStatistiques from '../components/TableauStatistiques';
 
 const Statistiques = () => {
     return (
@@ -11,7 +11,7 @@ const Statistiques = () => {
             </header>
             <main>
                 <StatistiquesGloables />
-                <TableauJoueurs />
+                <TableauStatistiques />
             </main>
             <footer>
 
