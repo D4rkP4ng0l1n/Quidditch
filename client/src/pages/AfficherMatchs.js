@@ -16,12 +16,12 @@ const AfficherMatchs = () => {
             </header>
             <main>
                 {/* <ListeDesMatchs /> */}
-                {/* <FormAjoutMatch /> */}
+                <FormAjoutMatch />
                 {/* <FormModifMatch /> */}
                 {/* <ConfirmSupprMatch /> */}
                 {/* <SelectFeuilleMatch /> */}
                 {/* <ModifFeuilleMatch /> */}
-                <ConfirmSupprFeuilleMatch />
+                {/* <ConfirmSupprFeuilleMatch /> */}
             </main>
             <footer>
 

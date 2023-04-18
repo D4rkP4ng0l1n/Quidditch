@@ -2,7 +2,7 @@ import React from 'react';
 
 const TableauJoueurs = () => {
     return (
-        <article className='tableauJoueurs'>
+        <article className='centrerTableau'>
             <header>
                 <h1> Liste des joueurs </h1>
                 <button className='ajouterJoueur'> Ajouter un joueur </button>

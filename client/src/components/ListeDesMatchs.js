@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListeDesMatchs = () => {
     return (
-        <article>
+        <article className='centrerTableau'>
             <header>
                 <h1>Liste des matchs</h1>
             </header>

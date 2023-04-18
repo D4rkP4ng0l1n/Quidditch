@@ -10,7 +10,12 @@ th {
     padding: 10px;
 }
 
-
+.centrerTableau {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
 /* ---------- Bouton ---------- */
 
@@ -107,19 +112,6 @@ button:hover {
     color: #ffe843;
     border-color: #ffe843;
 }
-
-
-
-/* ---------- TableauJoueurs ---------- */
-
-.tableauJoueurs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-
 
 /* ---------- FormAjouterJoueur ---------- */
 
