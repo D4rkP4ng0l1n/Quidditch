@@ -12,7 +12,7 @@ const AfficherJoueurs = () => {
             <main>
                 <TableauJoueurs />
                 {/* <FormAjouterJoueur /> */}
-                <SupprimerJoueur />
+                {/* <SupprimerJoueur /> */}
             </main>
             <footer>
 

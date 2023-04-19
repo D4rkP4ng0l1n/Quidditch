@@ -69,7 +69,8 @@ form input[type="file"] {
 }
 
 form input[type="submit"],
-form input[type="button"] {
+form input[type="button"],
+form input[type="reset"] {
     min-width: 120px;
     margin: 0.5rem;
     padding: 0.4rem 0;
@@ -83,7 +84,8 @@ form input[type="button"] {
 }
 
 form input[type="submit"]:hover,
-form input[type="button"]:hover {
+form input[type="button"]:hover,
+form input[type="reset"]:hover {
     background-color: #ed2794;
     color: #ffe843;
     border-color: #ffe843;
