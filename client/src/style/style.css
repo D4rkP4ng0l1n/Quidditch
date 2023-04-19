@@ -17,8 +17,6 @@ th {
     text-align: center;
 }
 
-
-
 /* ---------- Bouton ---------- */
 
 button {
@@ -188,13 +186,28 @@ form select option {
     border-color: #ffe843;
 }
 
-
-
 /* ---------- FormAjouterJoueur ---------- */
 
 .titreFormulaire {}
 
 .mainFormulaire {
     display: flex;
+    flex-direction: column;
+}
+
+/* ---------- Pages Match ---------- */
+
+.containerTitre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------- Pages Match ---------- */
+
+.containerTabAndButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
 }

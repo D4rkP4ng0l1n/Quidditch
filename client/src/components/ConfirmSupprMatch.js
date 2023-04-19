@@ -3,10 +3,10 @@ import React from 'react';
 const ConfirmSupprMatch = () => {
     return (
         <article>
-            <header>
+            <header className='containerTitre'>
                 <h1>Voulez vous vraiment supprimer ce match ?</h1>
             </header>
-            <div>
+            <div className='containerTabAndButtons'>
                 <table>
                     <tbody>
                         <tr>
@@ -18,10 +18,10 @@ const ConfirmSupprMatch = () => {
                         </tr>
                     </tbody>
                 </table>
-                <form>
-                    <input type="submit" value="Oui"/>
-                    <input type="button" value="Non"/>
-                </form>
+                <div>
+                    <button>Oui</button>
+                    <button>Non</button>
+                </div>
             </div>
         </article>
     );
