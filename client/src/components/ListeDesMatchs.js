@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ListeDesMatchs = () => {
+const ListeDesMatchs = ({changerComponentAffiche}) => {
     const [matchs, setMatchs] = useState([]);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const ListeDesMatchs = () => {
                 <h1>Liste des matchs</h1>
             </header>
             <div>
-                <button>Ajouter un match</button>
+                <button onClick={() => changerComponentAffiche('FormAjoutMatch')}>Ajouter un match</button>
                 <table>
                     <thead>
                         <tr>
@@ -34,13 +34,13 @@ const ListeDesMatchs = () => {
                     <tbody>
                         {matchs.map(match => (
                             <tr key={match._id}>
-                                <td> {match.dateEtHeure} </td>
+                                <td> {new Date(match.dateEtHeure).toDateString()} </td>
+                                <td> {new Date(match.dateEtHeure).toTimeString().slice(0, 5)} </td>
                                 <td> {match.nomEquipeAdverse} </td>
                                 <td> {match.lieu} </td>
-                                <td> {match.score} </td>
-                                <td> {match.scoreAdverse} </td>
+                                <td> {match.score} - {match.scoreAdverse} </td>
                                 <td><a href=''>Modifier</a></td>
-                                <td><a href=''>Supprimer</a></td>
+                                <td><a onClick={() => changerComponentAffiche('ConfirmSupprMatch', match._id)}>Supprimer</a></td>
                             </tr>
                         ))}
                     </tbody>
