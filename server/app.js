@@ -5,7 +5,7 @@ const RouteJoueur = require('./router/routerJoueur');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://jules:ratio@bdquidditch.vrmghbt.mongodb.net/test', {
+mongoose.connect('mongodb+srv://jules:ratio@bdquidditch.vrmghbt.mongodb.net/quidditch', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
