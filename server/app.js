@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const RouteJoueur = require('./router/routerJoueur');
+const cors = require('cors');
 
 const app = express();
 
@@ -14,7 +15,9 @@ mongoose.connect('mongodb+srv://jules:ratio@bdquidditch.vrmghbt.mongodb.net/quid
     console.log(error);
 });
 
+app.use(cors());
+
 app.use(bodyParser.json());
-app.use('/api/joueur/', RouteJoueur);
+app.use('/joueur/', RouteJoueur);
 
 module.exports = app;
