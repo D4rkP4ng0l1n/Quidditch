@@ -8,6 +8,4 @@ const MatchSchema = mongoose.Schema({
     scoreAdverse : Number
 });
 
-const model = mongoose.model("Matchs", MatchSchema);
-
-module.exports = model;
+module.exports = mongoose.model("Matchs", MatchSchema);
