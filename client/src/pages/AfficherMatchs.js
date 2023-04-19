@@ -15,13 +15,13 @@ const AfficherMatchs = () => {
                 <MenuNavigationHeader />
             </header>
             <main>
-                {/* <ListeDesMatchs /> */}
+                <ListeDesMatchs />
                 {/* <FormAjoutMatch /> */}
                 {/* <FormModifMatch /> */}
                 {/* <ConfirmSupprMatch /> */}
                 {/* <SelectFeuilleMatch /> */}
                 {/* <ModifFeuilleMatch /> */}
-                <ConfirmSupprFeuilleMatch />
+                {/* <ConfirmSupprFeuilleMatch /> */}
             </main>
             <footer>
 

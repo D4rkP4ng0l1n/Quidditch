@@ -9,7 +9,7 @@ app.get("/api", (req, res) => {
 
 async function connect() {
     try {
-        await mongoose.connect('mongodb+srv://jules:ratio@bdquidditch.vrmghbt.mongodb.net/test');
+        await mongoose.connect('mongodb+srv://jules:ratio@bdquidditch.vrmghbt.mongodb.net/quidditch');
         console.log("Connecté à la BD mongo")
 
         /* Test insertion match
