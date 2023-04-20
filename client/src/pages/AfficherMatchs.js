@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuNavigationHeader from '../components/MenuNavigationHeader';
 import ListeDesMatchs from '../components/ListeDesMatchs'
 import FormAjoutMatch from '../components/FormAjoutMatch';
@@ -9,19 +9,27 @@ import ModifFeuilleMatch from '../components/ModifFeuilleMatch';
 import ConfirmSupprFeuilleMatch from '../components/ConfirmSupprFeuilleMatch';
 
 const AfficherMatchs = () => {
+    const [componentAffiche, setComponentAffiche] = useState('ListeDesMatchs');
+    const [idMatch, setIdMatch] = useState('');
+
+    const changerComponentAffiche = (component, id = "") => {
+        setComponentAffiche(component);
+        setIdMatch(id);
+    };
+
     return (
         <div>
             <header>
                 <MenuNavigationHeader />
             </header>
             <main>
-                <ListeDesMatchs />
-                {/* <FormAjoutMatch /> */}
-                {/* <FormModifMatch /> */}
-                {/* <ConfirmSupprMatch /> */}
-                {/* <SelectFeuilleMatch /> */}
-                {/* <ModifFeuilleMatch /> */}
-                {/* <ConfirmSupprFeuilleMatch /> */}
+                {componentAffiche === 'ListeDesMatchs' && <ListeDesMatchs changerComponentAffiche={changerComponentAffiche} />}
+                {componentAffiche === 'FormAjoutMatch' && <FormAjoutMatch changerComponentAffiche={changerComponentAffiche} />}
+                {componentAffiche === 'FormModifMatch' && <FormModifMatch changerComponentAffiche={changerComponentAffiche}/>}
+                {componentAffiche === 'ConfirmSupprMatch' && <ConfirmSupprMatch changerComponentAffiche={changerComponentAffiche} matchASuppr={idMatch}/>}
+                {componentAffiche === 'SelectFeuilleMatch' && <SelectFeuilleMatch />}
+                {componentAffiche === 'ModifFeuilleMatch' && <ModifFeuilleMatch />}
+                {componentAffiche === 'ConfirmSupprFeuilleMatch' && <ConfirmSupprFeuilleMatch />}
             </main>
             <footer>
 
