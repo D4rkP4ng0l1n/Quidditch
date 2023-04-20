@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const CreateJoueurTableau = () => {
+const CreateJoueurTableau = ({ handleSuppJoueurChange, handleModifJoueurChange }) => {
     const [joueurs, setJoueurs] = useState([]);
 
     useEffect(() => {
@@ -13,6 +13,17 @@ const CreateJoueurTableau = () => {
                 console.log(error);
             });
     }, []);
+
+    function calculateAge(dateOfBirth) {
+        const today = new Date();
+        const birthDate = new Date(dateOfBirth);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const month = today.getMonth() - birthDate.getMonth();
+        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
 
     return (
         <section>
@@ -33,15 +44,17 @@ const CreateJoueurTableau = () => {
                 <tbody>
                     {joueurs.map(joueur => (
                         <tr key={joueur._id}>
-                            <td> {joueur.photo} </td>
+                            <td> <img className='photo' src={joueur.photo} alt='Photo du joueur ' /> </td>
                             <td> {joueur.nom} </td>
                             <td> {joueur.prenom} </td>
                             <td> {joueur.numLicence} </td>
-                            <td> {joueur.age} </td>
+                            <td> {calculateAge(joueur.dateDeNaissance)} </td>
                             <td> {joueur.taille} </td>
                             <td> {joueur.poids} </td>
                             <td> {joueur.postePref} </td>
                             <td> {joueur.statut} </td>
+                            <td> <a href="#"> Modifier </a></td>
+                            <td> <a href="#" onClick={() => handleSuppJoueurChange(true, { joueur })}> Supprimer </a></td>
                         </tr>
                     ))}
                 </tbody>

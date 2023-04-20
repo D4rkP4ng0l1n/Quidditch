@@ -1,23 +1,19 @@
 import React from 'react';
 import MenuNavigationHeader from '../components/MenuNavigationHeader';
-import TableauJoueurs from '../components/TableauJoueurs';
+import ContentJoueur from '../components/ContentJoueur';
 import SupprimerJoueur from '../components/SupprimerJoueur';
 import CreateJoueurTableau from '../components/CreateJoueurTableau';
 
 const AfficherJoueurs = () => {
+
     return (
         <div>
             <header>
                 <MenuNavigationHeader />
             </header>
             <main>
-                <TableauJoueurs />
-                {/* <FormAjouterJoueur /> */}
-                {/* <SupprimerJoueur /> */}
+                <ContentJoueur />
             </main>
-            <footer>
-
-            </footer>
         </div>
     );
 };

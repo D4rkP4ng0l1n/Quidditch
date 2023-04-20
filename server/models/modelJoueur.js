@@ -4,7 +4,7 @@ const joueur = mongoose.Schema({
     nom: String,
     prenom: String,
     numLicence: Number,
-    age: Number,
+    dateDeNaissance: String,
     taille: Number,
     poids: Number,
     postePref: String,
