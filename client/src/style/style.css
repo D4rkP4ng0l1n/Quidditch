@@ -56,7 +56,8 @@ form {
 form input[type="text"],
 form input[type="date"],
 form select,
-form input[type="file"] {
+form input[type="file"],
+form input[type="number"] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -187,14 +188,16 @@ form select option {
     border-color: #ffe843;
 }
 
-/* ---------- FormAjouterJoueur ---------- */
 
-.titreFormulaire {}
 
-.mainFormulaire {
-    display: flex;
-    flex-direction: column;
+/* ---------- ContentJoueur ---------- */
+
+.photo {
+    height: 150px;
+    width: 125px;
 }
+
+
 
 /* ---------- Pages Match ---------- */
 
@@ -203,8 +206,6 @@ form select option {
     justify-content: center;
     align-items: center;
 }
-
-/* ---------- Pages Match ---------- */
 
 .containerTabAndButtons {
     display: flex;
