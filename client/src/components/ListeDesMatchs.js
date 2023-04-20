@@ -39,7 +39,7 @@ const ListeDesMatchs = ({changerComponentAffiche}) => {
                                 <td> {match.nomEquipeAdverse} </td>
                                 <td> {match.lieu} </td>
                                 <td> {match.score} - {match.scoreAdverse} </td>
-                                <td><a href=''>Modifier</a></td>
+                                <td><a onClick={() => changerComponentAffiche('FormModifMatch', match._id)}>Modifier</a></td>
                                 <td><a onClick={() => changerComponentAffiche('ConfirmSupprMatch', match._id)}>Supprimer</a></td>
                             </tr>
                         ))}

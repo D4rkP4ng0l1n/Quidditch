@@ -12,8 +12,8 @@ const FormAjoutMatch = ({ changerComponentAffiche }) => {
     e.preventDefault();
 
     if (!dateMatch || !heureMatch || !equipeAdverse || !lieu) {
-        setErreur('Veuillez remplir tous les champs du formulaire.');
-        return;
+      setErreur('Veuillez remplir tous les champs du formulaire.');
+      return;
     }
     setErreur('');
 
@@ -24,26 +24,27 @@ const FormAjoutMatch = ({ changerComponentAffiche }) => {
     const mois = date.getMonth();
     const jour = date.getDate();
 
-    const heures = heure.getHours();
+    const heures = heure.getUTCHours(); // Utiliser setUTCHours() au lieu de setHours()
     const minutes = heure.getMinutes();
 
     const dateHeure = new Date(annee, mois, jour, heures, minutes);
 
     const nouveauMatch = {
-        dateEtHeure : dateHeure,
-        nomEquipeAdverse : equipeAdverse,
-        lieu : lieu,
-        score : 0,
-        scoreAdverse : 0
-    }
+      dateEtHeure: dateHeure,
+      nomEquipeAdverse: equipeAdverse,
+      lieu: lieu,
+      score: 0,
+      scoreAdverse: 0
+    };
 
-    axios.post('http://localhost:5000/match/', nouveauMatch)
-        .then(response => {
-            console.log('Response:', response.data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    axios
+      .post('http://localhost:5000/match/', nouveauMatch)
+      .then((response) => {
+        console.log('Response:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
     setDateMatch('');
     setHeure('');
@@ -90,9 +91,9 @@ const FormAjoutMatch = ({ changerComponentAffiche }) => {
           />
         </form>
         <div>
-            <button onClick={confirmerAjout}>Valider</button>
-            <button onClick={() => changerComponentAffiche('ListeDesMatchs')}>Annuler</button>
-            <p>{erreur}</p>
+          <button onClick={confirmerAjout}>Valider</button>
+          <button onClick={() => changerComponentAffiche('ListeDesMatchs')}>Annuler</button>
+          <p>{erreur}</p>
         </div>
       </div>
     </article>
