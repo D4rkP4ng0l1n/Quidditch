@@ -31,7 +31,7 @@ const SupprimerJoueur = ({ handleSuppJoueurChange, joueur }) => {
                     </thead>
                     <tbody>
                         <tr key={joueur.joueur._id}>
-                            <td> {joueur.joueur.photo} </td>
+                            <td> <img className='photo' src={joueur.photo} alt='Photo du joueur ' /> </td>
                             <td> {joueur.joueur.nom} </td>
                             <td> {joueur.joueur.prenom} </td>
                             <td> {joueur.joueur.numLicence} </td>

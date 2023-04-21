@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const RouteJoueur = require('./router/routerJoueur');
-const RouteUppload = require('./router/routerUppload.js');
+const RouteUpload = require('./router/routerUpload');
 const RouteMatch = require('./router/routerMatch');
 
 const cors = require('cors');
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 app.use('/joueur', RouteJoueur);
 app.use('/match', RouteMatch);
-app.use('/upload', RouteUppload)
+app.use('/upload', RouteUpload)
 
 
 module.exports = app;
