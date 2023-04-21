@@ -12,4 +12,4 @@ const joueur = mongoose.Schema({
     photo: String
 });
 
-module.exports = mongoose.model('Joueur', joueur);
+module.exports = mongoose.model('Joueur', joueur); image.png
