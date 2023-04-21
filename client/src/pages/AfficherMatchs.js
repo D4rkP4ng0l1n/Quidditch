@@ -25,8 +25,8 @@ const AfficherMatchs = () => {
             <main>
                 {componentAffiche === 'ListeDesMatchs' && <ListeDesMatchs changerComponentAffiche={changerComponentAffiche} />}
                 {componentAffiche === 'FormAjoutMatch' && <FormAjoutMatch changerComponentAffiche={changerComponentAffiche} />}
-                {componentAffiche === 'FormModifMatch' && <FormModifMatch changerComponentAffiche={changerComponentAffiche}/>}
-                {componentAffiche === 'ConfirmSupprMatch' && <ConfirmSupprMatch changerComponentAffiche={changerComponentAffiche} matchASuppr={idMatch}/>}
+                {componentAffiche === 'FormModifMatch' && <FormModifMatch changerComponentAffiche={changerComponentAffiche} matchAModif={idMatch} />}
+                {componentAffiche === 'ConfirmSupprMatch' && <ConfirmSupprMatch changerComponentAffiche={changerComponentAffiche} matchASuppr={idMatch} />}
                 {componentAffiche === 'SelectFeuilleMatch' && <SelectFeuilleMatch />}
                 {componentAffiche === 'ModifFeuilleMatch' && <ModifFeuilleMatch />}
                 {componentAffiche === 'ConfirmSupprFeuilleMatch' && <ConfirmSupprFeuilleMatch />}

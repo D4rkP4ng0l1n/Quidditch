@@ -5,6 +5,20 @@ const ConfirmSupprMatch = ({changerComponentAffiche, matchASuppr}) => {
     
     const [match, setMatch] = useState([]);
 
+    const supprimerMatch = (e) => {
+        e.preventDefault();
+
+        axios.delete('http://localhost:5000/match/' + matchASuppr)
+        .then(response => {
+            console.log('Response:', response.data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+        changerComponentAffiche('ListeDesMatchs');
+    }
+
     useEffect(() => {
         axios.get('http://localhost:5000/match/' + matchASuppr)
             .then(response => {
@@ -42,7 +56,7 @@ const ConfirmSupprMatch = ({changerComponentAffiche, matchASuppr}) => {
                     </tbody>
                 </table>
                 <div>
-                    <button>Oui</button>
+                    <button onClick={supprimerMatch}>Oui</button>
                     <button onClick={() => changerComponentAffiche('ListeDesMatchs')}>Non</button>
                 </div>
             </div>
