@@ -5,10 +5,26 @@ const SupprimerJoueur = ({ handleSuppJoueurChange, joueur }) => {
 
     const supprimerJoueur = () => {
         const id = joueur.joueur._id.toString();
+        const nomImg = joueur.joueur.photo;
         axios.delete('http://localhost:5000/joueur/' + id)
             .catch((error) => {
                 console.log(error);
             });
+        axios.delete('http://localhost:5000/upload/' + nomImg)
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    function calculateAge(dateOfBirth) {
+        const today = new Date();
+        const birthDate = new Date(dateOfBirth);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const month = today.getMonth() - birthDate.getMonth();
+        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
     }
 
     return (
@@ -31,11 +47,11 @@ const SupprimerJoueur = ({ handleSuppJoueurChange, joueur }) => {
                     </thead>
                     <tbody>
                         <tr key={joueur.joueur._id}>
-                            <td> {joueur.joueur.photo} </td>
+                            <td> <img className='photo' src={require(`../../public/assets/images/joueurs/uploads/${joueur.joueur.photo}`)} alt={joueur.joueur.photo} /> </td>
                             <td> {joueur.joueur.nom} </td>
                             <td> {joueur.joueur.prenom} </td>
                             <td> {joueur.joueur.numLicence} </td>
-                            <td> {joueur.joueur.age} </td>
+                            <td> {calculateAge(joueur.joueur.dateDeNaissance)} </td>
                             <td> {joueur.joueur.taille} </td>
                             <td> {joueur.joueur.poids} </td>
                             <td> {joueur.joueur.postePref} </td>

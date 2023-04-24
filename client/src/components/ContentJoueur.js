@@ -21,12 +21,13 @@ const ContentJoueur = () => {
         setJoueur(joueur);
     };
 
-    const handleModifJoueurChange = (value) => {
+    const handleModifJoueurChange = (value, joueur) => {
         setModifJoueur(value);
+        setJoueur(joueur);
     };
 
     return (
-        <article className='centrerTableau'>
+        <article className='centrerContent'>
             {!showForm && !suppJoueur && !modifJoueur && (
                 <header className='ajouterJoueur'>
                     <h1> Liste des joueurs </h1>
@@ -36,7 +37,7 @@ const ContentJoueur = () => {
             {!showForm && !suppJoueur && !modifJoueur && <CreateJoueurTableau handleSuppJoueurChange={handleSuppJoueurChange} handleModifJoueurChange={handleModifJoueurChange} />}
             {showForm && !suppJoueur && !modifJoueur && <FormAjouterJoueur handleShowFormChange={handleShowFormChange} />}
             {!showForm && suppJoueur && !modifJoueur && <SupprimerJoueur handleSuppJoueurChange={handleSuppJoueurChange} joueur={joueur} />}
-            {!showForm && !suppJoueur && modifJoueur && <FormAjouterJoueur />}
+            {!showForm && !suppJoueur && modifJoueur && <FormAjouterJoueur handleModifJoueurChange={handleModifJoueurChange} joueur={joueur} />}
         </article >
     );
 };

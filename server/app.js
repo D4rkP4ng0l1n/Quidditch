@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const RouteJoueur = require('./router/routerJoueur');
-const RouteUppload = require('./router/routerUppload.js');
+const RouteUpload = require('./router/routerUpload');
 const RouteMatch = require('./router/routerMatch');
 const RouteParticipation = require('./router/routerParticipation');
 

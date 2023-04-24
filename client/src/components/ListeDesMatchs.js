@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ListeDesMatchs = ({changerComponentAffiche}) => {
+const ListeDesMatchs = ({ changerComponentAffiche }) => {
     const [matchs, setMatchs] = useState([]);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const ListeDesMatchs = ({changerComponentAffiche}) => {
     }, [matchs]);
 
     return (
-        <article className='centrerTableau'>
+        <article className='centrerContent'>
             <header>
                 <h1>Liste des matchs</h1>
             </header>

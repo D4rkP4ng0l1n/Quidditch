@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const FormAjouterJoueur = ({ handleShowFormChange }) => {
+
+const FormAjouterJoueur = ({ handleShowFormChange, handleModifJoueurChange, joueur }) => {
 
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
@@ -11,13 +12,61 @@ const FormAjouterJoueur = ({ handleShowFormChange }) => {
     const [poids, setPoids] = useState('');
     const [postePref, setPostePref] = useState('');
     const [statut, setStatut] = useState('');
-    const [photo, setPhoto] = useState('');
-    const [photoUrl, setPhotoUrl] = useState('');
 
+    const [imageInfo, setImageInfo] = useState({
+        file: [],
+        fileName: null,
+        filepreview: null
+    });
+
+    const handleInputChange = (event) => {
+        setImageInfo({
+            ...imageInfo,
+            file: event.target.files[0],
+            fileName: event.target.files[0].name,
+            filepreview: URL.createObjectURL(event.target.files[0])
+        });
+    }
+
+    useEffect(() => {
+        if (joueur) {
+            setNom(joueur.joueur.nom);
+            setPrenom(joueur.joueur.prenom);
+            setNumLicence(joueur.joueur.numLicence);
+            setDateNaissance(joueur.joueur.dateDeNaissance);
+            setTaille(joueur.joueur.taille);
+            setPoids(joueur.joueur.poids);
+            setPostePref(joueur.joueur.postePref);
+            setStatut(joueur.joueur.statut);
+            setImageInfo({
+                ...imageInfo,
+                fileName: joueur.joueur.photo,
+                filepreview: '../../public/assets/images/joueurs/' + joueur.joueur.photo,
+            })
+        }
+    }, [joueur]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (nom && prenom && numLicence && dateNaissance && taille && poids && postePref !== '' && statut !== '') {
+
+            console.log("Nom: ", nom);
+            console.log("Prenom: ", prenom);
+            console.log("Numero de licence: ", numLicence);
+            console.log("Date de naissance: ", dateNaissance);
+            console.log("Taille: ", taille);
+            console.log("Poids: ", poids);
+            console.log("Poste prefere: ", postePref);
+            console.log("Statut: ", statut);
+            console.log("Photo: ", imageInfo.fileName);
+
+            const formdata = new FormData();
+            formdata.append('image', imageInfo.file);
+
+            axios.post("http://localhost:5000/upload", formdata, {
+                header: { "Content-Type": "multipart/form-data" }
+            })
+
             const nouveauJoueur = {
                 nom: nom,
                 prenom: prenom,
@@ -27,31 +76,21 @@ const FormAjouterJoueur = ({ handleShowFormChange }) => {
                 poids: poids,
                 postePref: postePref,
                 statut: statut,
-                photo: photoUrl
+                photo: '' + imageInfo.fileName
             }
-            axios.post('http://localhost:5000/joueur', nouveauJoueur)
-                .then((res) => {
-                    const image = document.getElementById('image').src;
-                    const data = { image };
-                    fetch("http://localhost:5000/upload", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(data),
-                    })
-                        .then((response) => {
-                            console.log(response);
-                        })
-                        .catch((error) => {
-                            console.error(error);
-                        });
-                    console.log(res);
-                    handleShowFormChange(false);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
+
+            if (!handleModifJoueurChange) {
+                axios.post('http://localhost:5000/joueur', nouveauJoueur)
+                    .then((res) => { console.log(res) })
+                    .catch((error) => { console.log(error) });
+                handleShowFormChange(false);
+            } else {
+                const id = joueur.joueur._id.toString();
+                axios.put('http://localhost:5000/joueur/' + id, nouveauJoueur)
+                    .then((res) => { console.log(res) })
+                    .catch((error) => { console.log(error) });
+                handleModifJoueurChange(false);
+            }
         } else {
             console.log('Veuillez remplir tous les champs du formulaire.');
         }
@@ -86,13 +125,20 @@ const FormAjouterJoueur = ({ handleShowFormChange }) => {
                         <option value="Suspendu"> Suspendu </option>
                         <option value="Absent"> Absent </option>
                     </select>
-                    Photo <input type="file" onChange={((e) => {
-                        setPhoto(e.target.files[0].name);
-                        setPhotoUrl(URL.createObjectURL(e.target.files[0]));
-                    })} />
-                    {photoUrl && <img id='image' className='photo' src={photoUrl} alt='Upploaded Image' />}
+                    Photo <input type="file" onChange={handleInputChange} />
+                    {
+                        imageInfo.filepreview !== null ?
+                            <img className='photo' src={imageInfo.filepreview} alt='UploadImage' />
+                            : null
+                    }
                     <input type="submit" value="Valider" />
-                    <input type="button" value="Annuler" onClick={() => handleShowFormChange(false)} />
+                    <input type="button" value="Annuler" onClick={() => {
+                        if (!handleModifJoueurChange) {
+                            handleShowFormChange(false);
+                        } else {
+                            handleModifJoueurChange(false);
+                        }
+                    }} />
                 </form>
             </section>
         </article>

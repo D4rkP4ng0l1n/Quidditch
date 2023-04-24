@@ -21,7 +21,7 @@ exports.createJoueur = (req, res) => {
 exports.updateOneJoueur = (req, res) => {
     const id = req.params.id;
     const body = req.body;
-    Joueur.findOneAndUpdate(id, body)
+    Joueur.findOneAndUpdate({ _id: id }, body, { new: true })
         .then((joueur) => {
             return res.status(200).json({ joueur });
         }).catch((error) => {
