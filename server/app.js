@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const RouteJoueur = require('./router/routerJoueur');
 const RouteUpload = require('./router/routerUpload');
 const RouteMatch = require('./router/routerMatch');
+const RouteParticipation = require('./router/routerParticipation');
 
 const cors = require('cors');
 
@@ -23,7 +24,8 @@ app.use(bodyParser.json());
 
 app.use('/joueur', RouteJoueur);
 app.use('/match', RouteMatch);
-app.use('/upload', RouteUpload)
+app.use('/participation', RouteParticipation)
+app.use('/upload', RouteUppload)
 
 
 module.exports = app;
