@@ -12,7 +12,7 @@ const ListeDesMatchs = ({changerComponentAffiche}) => {
             .catch(error => {
                 console.log(error);
             });
-    }, []);
+    }, [matchs]);
 
     return (
         <article className='centrerTableau'>
@@ -41,6 +41,7 @@ const ListeDesMatchs = ({changerComponentAffiche}) => {
                                 <td> {match.score} - {match.scoreAdverse} </td>
                                 <td><a onClick={() => changerComponentAffiche('FormModifMatch', match._id)}>Modifier</a></td>
                                 <td><a onClick={() => changerComponentAffiche('ConfirmSupprMatch', match._id)}>Supprimer</a></td>
+                                <td><a onClick={() => changerComponentAffiche('SelectFeuilleMatch', match._id)}>Feuille de match</a></td>
                             </tr>
                         ))}
                     </tbody>
