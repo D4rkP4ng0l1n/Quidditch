@@ -37,7 +37,7 @@ exports.uploadImage = (req, res) => {
 
 exports.deleteImg = (req, res) => {
     const nom = req.params.nom;
-    const filePath = '../../client/public/assets/images/joueurs/uploads/' + nom;
+    const filePath = path.join(__dirname, '../../client/public/assets/images/joueurs/uploads', nom);
 
     fs.unlink(filePath, (err) => {
         if (err) {

@@ -7,13 +7,15 @@ const SupprimerJoueur = ({ handleSuppJoueurChange, joueur }) => {
         const id = joueur.joueur._id.toString();
         const nomImg = joueur.joueur.photo;
         axios.delete('http://localhost:5000/joueur/' + id)
+            .then(() => {
+                axios.delete('http://localhost:5000/upload/' + nomImg)
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            })
             .catch((error) => {
                 console.log(error);
             });
-        axios.delete('http://localhost:5000/upload/' + nomImg)
-            .catch((error) => {
-                console.log(error);
-            })
     }
 
     function calculateAge(dateOfBirth) {
