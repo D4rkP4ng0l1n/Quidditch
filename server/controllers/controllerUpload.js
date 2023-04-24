@@ -1,5 +1,6 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
     destination: path.join(__dirname, '../../client/public/assets/images/joueurs', 'uploads'),
@@ -7,7 +8,7 @@ const storage = multer.diskStorage({
         cb(null, file.originalname);
     }
 });
-image.png
+
 exports.uploadImage = (req, res) => {
 
     try {
@@ -32,4 +33,17 @@ exports.uploadImage = (req, res) => {
 
         });
     } catch (err) { console.log(err) }
+}
+
+exports.deleteImg = (req, res) => {
+    const nom = req.params.nom;
+    const filePath = '../../client/public/assets/images/joueurs/uploads/' + nom;
+
+    fs.unlink(filePath, (err) => {
+        if (err) {
+            return res.status(400).json({ err });
+        }
+
+        return res.status(200).send('Le fichier a été supprimé');
+    });
 }

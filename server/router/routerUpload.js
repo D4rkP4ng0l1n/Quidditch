@@ -4,5 +4,7 @@ const UploadCtrl = require('../controllers/controllerUpload');
 
 router.post('/', UploadCtrl.uploadImage);
 
+router.delete('/:nom', UploadCtrl.deleteImg);
+
 
 module.exports = router;

@@ -79,17 +79,17 @@ const FormAjouterJoueur = ({ handleShowFormChange, handleModifJoueurChange, joue
                 photo: '' + imageInfo.fileName
             }
 
-            console.log(nouveauJoueur);
-
             if (!handleModifJoueurChange) {
                 axios.post('http://localhost:5000/joueur', nouveauJoueur)
                     .then((res) => { console.log(res) })
-                    .catch((error) => { console.log(error) });;
+                    .catch((error) => { console.log(error) });
+                handleShowFormChange(false);
             } else {
                 const id = joueur.joueur._id.toString();
                 axios.put('http://localhost:5000/joueur/' + id, nouveauJoueur)
                     .then((res) => { console.log(res) })
                     .catch((error) => { console.log(error) });
+                handleModifJoueurChange(false);
             }
         } else {
             console.log('Veuillez remplir tous les champs du formulaire.');

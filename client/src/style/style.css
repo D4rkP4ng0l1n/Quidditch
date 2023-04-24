@@ -18,6 +18,8 @@ td {
     text-align: center;
 }
 
+
+
 /* ---------- Bouton ---------- */
 
 button {
@@ -57,7 +59,8 @@ form input[type="text"],
 form input[type="date"],
 form select,
 form input[type="file"],
-form input[type="number"] {
+form input[type="number"],
+form input[type="password"] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -188,6 +191,39 @@ form select option {
     border-color: #ffe843;
 }
 
+
+
+/* ---------- FormLogin ---------- */
+
+.authentification {
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 40px 60px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+
+
+/* ---------- AccueilMainContent ---------- */
+
+.imgAccueil {
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1%;
+}
 
 
 /* ---------- ContentJoueur ---------- */

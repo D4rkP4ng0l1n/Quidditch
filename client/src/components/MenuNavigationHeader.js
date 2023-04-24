@@ -7,12 +7,12 @@ const MenuNavigationHeader = () => {
         <div>
             <div className='headerNavigation'>
                 <h1> Gestus 2000 </h1>
-                <button className='loginButton' onClick={() => window.location.href = '/login'}> Login </button>
+                <button className='loginButton' onClick={() => window.location.href = '/'}> Se deconnecter </button>
             </div>
             <div className="navigation">
                 <ul>
-                    <NavLink to="/">
-                        <li> Acueil </li>
+                    <NavLink to="/home">
+                        <li> Accueil </li>
                     </NavLink>
                     <NavLink to="/joueurs">
                         <li> Joueurs </li>

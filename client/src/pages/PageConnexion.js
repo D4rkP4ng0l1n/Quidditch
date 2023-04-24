@@ -1,10 +1,11 @@
 import React from 'react';
+import FormLogin from '../components/FormLogin';
 
 const PageConnexion = () => {
     return (
-        <div>
-
-        </div>
+        <main>
+            <FormLogin />
+        </main>
     );
 };
 

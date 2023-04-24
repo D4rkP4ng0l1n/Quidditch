@@ -44,7 +44,7 @@ const CreateJoueurTableau = ({ handleSuppJoueurChange, handleModifJoueurChange }
                 <tbody>
                     {joueurs.map(joueur => (
                         <tr key={joueur._id}>
-                            <td> <img className='photo' src={'../../public/assets/images/joueurs/uploads' + joueur.photo} alt={joueur.photo} /> </td>
+                            <td> <img className='photo' src={require(`../../public/assets/images/joueurs/uploads/${joueur.photo}`)} alt={joueur.photo} /> </td>
                             <td> {joueur.nom} </td>
                             <td> {joueur.prenom} </td>
                             <td> {joueur.numLicence} </td>
