@@ -5,12 +5,12 @@ const TableauStatistiques = () => {
 
     const [joueurs, setJoueurs] = useState([]);
     const [nbMatchs, setNbMatchs] = useState([]);
-    const [nbSelections, setNbSelections] = useState({});
+    const [infosParticipations, setInfosParticipations] = useState({});
 
 
     useEffect(() => {
         // Fonction qui récupère le nombre de sélections pour un joueur donné
-        const fetchNbSelections = async (joueur) => {
+        const fetchInfosParticipations = async (joueur) => {
             const response = await axios.get('http://localhost:5000/participation/joueur/' + joueur._id);
             const participations = response.data.participation;
 
@@ -69,18 +69,18 @@ const TableauStatistiques = () => {
                 const nbMatchs = matchResponse.data.match.length;
 
                 // Parcours de tous les joueurs pour récupérer leur nombre de sélections
-                const nbSelectionsPromises = joueurs.map((joueur) => fetchNbSelections(joueur));
-                const nbSelections = await Promise.all(nbSelectionsPromises);
+                const infosParticipationsPromises = joueurs.map((joueur) => fetchInfosParticipations(joueur));
+                const infosParticipations = await Promise.all(infosParticipationsPromises);
 
                 // Mise à jour des states
                 setJoueurs(joueurs);
                 setNbMatchs(nbMatchs);
 
-                const newNbSelections = {};
+                const newInfosParticipations = {};
                 joueurs.forEach((joueur, index) => {
-                    newNbSelections[joueur._id] = nbSelections[index];
+                    newInfosParticipations[joueur._id] = infosParticipations[index];
                 });
-                setNbSelections(newNbSelections);
+                setInfosParticipations(newInfosParticipations);
             } catch (error) {
                 console.log(error);
             }
@@ -110,13 +110,13 @@ const TableauStatistiques = () => {
                             <td> {joueur.nom} {joueur.prenom} </td>
                             <td> {joueur.statut} </td>
                             <td> {joueur.postePref} </td>
-                            <td> {nbSelections[joueur._id]?.nbSelectionTitulaire || 0} </td>
-                            <td> {nbSelections[joueur._id]?.nbSelectionRemplacant || 0} </td>
-                            <td> {nbSelections[joueur._id]?.moyEval || '/'} </td>
+                            <td> {infosParticipations[joueur._id]?.nbSelectionTitulaire || 0} </td>
+                            <td> {infosParticipations[joueur._id]?.nbSelectionRemplacant || 0} </td>
+                            <td> {infosParticipations[joueur._id]?.moyEval || '/'} </td>
                             <td>
                                 {
-                                    nbSelections[joueur._id]?.nbMatchJoue !== 0 ?
-                                        ((nbSelections[joueur._id].nbMatchWin / nbSelections[joueur._id].nbMatchJoue) * 100).toFixed(2) + " %"
+                                    infosParticipations[joueur._id]?.nbMatchJoue !== 0 ?
+                                        ((infosParticipations[joueur._id].nbMatchWin / infosParticipations[joueur._id].nbMatchJoue) * 100).toFixed(2) + " %"
                                         : "0 %"
                                 }
                             </td>
