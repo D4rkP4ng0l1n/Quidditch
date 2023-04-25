@@ -8,6 +8,14 @@ const ConfirmSupprMatch = ({changerComponentAffiche, matchASuppr}) => {
     const supprimerMatch = (e) => {
         e.preventDefault();
 
+        axios.delete('http://localhost:5000/participation/match/' + matchASuppr)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
         axios.delete('http://localhost:5000/match/' + matchASuppr)
         .then(response => {
             console.log('Response:', response.data);

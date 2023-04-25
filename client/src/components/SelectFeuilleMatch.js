@@ -61,7 +61,7 @@ const SelectFeuilleMatch = ({ changerComponentAffiche, idMatch }) => {
         nouveauxJoueurs.push(joueur);
     }
     return Promise.resolve(nouveauxJoueurs);
-};
+  };
 
 const creerFeuilleDeMatch = async (e) => {
     e.preventDefault();
@@ -82,6 +82,10 @@ const creerFeuilleDeMatch = async (e) => {
         .catch((error) => {
             console.error('Error:', error);
         });
+
+    setIdJoueursChecked('');
+    setIdJoueursTitulaires('');
+    setJoueurs('');
 
     changerComponentAffiche('ListeDesMatchs');
 };
@@ -109,7 +113,7 @@ const creerFeuilleDeMatch = async (e) => {
           <tbody>
             {joueurs.map(joueur => (
               <tr key={joueur._id}>
-                <td> {joueur.photo} </td>
+                <td> <img className='photo' src={require(`../../public/assets/images/joueurs/uploads/${joueur.photo}`)} alt={joueur.photo} /> </td>
                 <td> {joueur.taille} </td>
                 <td> {joueur.poids} </td>
                 <td> {joueur.postePref} </td>
