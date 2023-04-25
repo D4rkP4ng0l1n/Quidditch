@@ -4,7 +4,7 @@ import StatistiquesGloables from '../components/StatistiquesGloables';
 import TableauStatistiques from '../components/TableauStatistiques';
 
 const Statistiques = () => {
-    if(localStorage.getItem('session') === '') {
+    if(localStorage.getItem('session') === null) {
         window.location.href = '/'
     }
     return (

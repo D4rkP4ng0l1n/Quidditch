@@ -7,9 +7,10 @@ const MenuNavigationHeader = () => {
         <div>
             <div className='headerNavigation'>
                 <h1> Gestus 2000 </h1>
-                <NavLink to="/">
-                    <button className='loginButton' onClick={localStorage.setItem('session', '')}> Se deconnecter </button>
-                </NavLink>
+                <button className='loginButton' onClick={ () => {
+                    localStorage.removeItem('session');
+                    window.location.href = '/';}
+                }> Se deconnecter </button>
             </div>
             <div className="navigation">
                 <ul>

@@ -3,7 +3,7 @@ import MenuNavigationHeader from '../components/MenuNavigationHeader';
 import ContentJoueur from '../components/ContentJoueur';
 
 const AfficherJoueurs = () => {
-    if(localStorage.getItem('session') === '') {
+    if(localStorage.getItem('session') === null) {
         window.location.href = '/'
     }
     return (

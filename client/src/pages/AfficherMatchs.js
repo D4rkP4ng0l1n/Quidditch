@@ -9,10 +9,10 @@ import ModifFeuilleMatch from '../components/ModifFeuilleMatch';
 import ConfirmSupprFeuilleMatch from '../components/ConfirmSupprFeuilleMatch';
 
 const AfficherMatchs = () => {
-    if(localStorage.getItem('session') === '') {
+    if(localStorage.getItem('session') === null) {
         window.location.href = '/'
     }
-    
+
     const [componentAffiche, setComponentAffiche] = useState('ListeDesMatchs');
     const [idMatch, setIdMatch] = useState('');
 
