@@ -3,6 +3,9 @@ import MenuNavigationHeader from '../components/MenuNavigationHeader';
 import AccueilMainContent from '../components/AccueilMainContent';
 
 const AccueilConnecte = () => {
+    if(localStorage.getItem('session') === '') {
+        window.location.href = '/'
+    }
     return (
         <div>
             <header>

@@ -50,4 +50,33 @@ exports.getAllParticipationsForOneMatch = (req, res) => {
         }).catch((error) => {
             return res.status(400).json({ error });
         });
+
+};
+
+// PARTIE DELETE
+
+exports.delAllParticipationsForOneMatch = (req, res) => {
+    const id = req.params.idMatch;
+    Participation.deleteMany({ idMatch: id })
+        .then((participation) => {
+            return res.status(200).json({ participation });
+        })
+        .catch((error) => {
+            return res.status(400).json({ error });
+        });
+}
+
+// PARTIE PUT
+
+exports.updateAllParticipationsForOneMatch = (req, res) => {
+    const id = req.params.idMatch;
+    const updates = req.body.participation; 
+
+    Promise.all(updates.map(update => {
+        return Participation.findByIdAndUpdate(update._id, update, { new: true });
+    })).then((results) => {
+        return res.status(200).json({ results });
+    }).catch((error) => {
+        return res.status(400).json({ error });
+    });
 };

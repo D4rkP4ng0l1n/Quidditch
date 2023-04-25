@@ -4,6 +4,9 @@ import StatistiquesGloables from '../components/StatistiquesGloables';
 import TableauStatistiques from '../components/TableauStatistiques';
 
 const Statistiques = () => {
+    if(localStorage.getItem('session') === '') {
+        window.location.href = '/'
+    }
     return (
         <div>
             <header>

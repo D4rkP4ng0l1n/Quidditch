@@ -9,6 +9,10 @@ import ModifFeuilleMatch from '../components/ModifFeuilleMatch';
 import ConfirmSupprFeuilleMatch from '../components/ConfirmSupprFeuilleMatch';
 
 const AfficherMatchs = () => {
+    if(localStorage.getItem('session') === '') {
+        window.location.href = '/'
+    }
+    
     const [componentAffiche, setComponentAffiche] = useState('ListeDesMatchs');
     const [idMatch, setIdMatch] = useState('');
 
@@ -28,8 +32,8 @@ const AfficherMatchs = () => {
                 {componentAffiche === 'FormModifMatch' && <FormModifMatch changerComponentAffiche={changerComponentAffiche} matchAModif={idMatch} />}
                 {componentAffiche === 'ConfirmSupprMatch' && <ConfirmSupprMatch changerComponentAffiche={changerComponentAffiche} matchASuppr={idMatch} />}
                 {componentAffiche === 'SelectFeuilleMatch' && <SelectFeuilleMatch changerComponentAffiche={changerComponentAffiche} idMatch={idMatch} />}
-                {componentAffiche === 'ModifFeuilleMatch' && <ModifFeuilleMatch changerComponentAffiche={changerComponentAffiche} idFeuilleDeMatch={idMatch} />}
-                {componentAffiche === 'ConfirmSupprFeuilleMatch' && <ConfirmSupprFeuilleMatch changerComponentAffiche={changerComponentAffiche} idFeuilleDeMatch={idMatch} />}
+                {componentAffiche === 'ModifFeuilleMatch' && <ModifFeuilleMatch changerComponentAffiche={changerComponentAffiche} idMatch={idMatch} />}
+                {componentAffiche === 'ConfirmSupprFeuilleMatch' && <ConfirmSupprFeuilleMatch changerComponentAffiche={changerComponentAffiche} idMatch={idMatch} />}
             </main>
             <footer>
 

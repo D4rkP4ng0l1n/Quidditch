@@ -84,6 +84,10 @@ const SelectFeuilleMatch = ({ changerComponentAffiche, idMatch }) => {
         console.error('Error:', error);
       });
 
+    setIdJoueursChecked('');
+    setIdJoueursTitulaires('');
+    setJoueurs('');
+
     changerComponentAffiche('ListeDesMatchs');
   };
 

@@ -9,7 +9,7 @@ const MenuNavigationHeader = () => {
             <div className='headerNavigation'>
                 <h1> Gestus 2000 </h1>
                 <NavLink to="/">
-                    <button className='loginButton'> Se deconnecter </button>
+                    <button className='loginButton' onClick={localStorage.setItem('session', '')}> Se deconnecter </button>
                 </NavLink>
             </div>
             <div className="navigation">
