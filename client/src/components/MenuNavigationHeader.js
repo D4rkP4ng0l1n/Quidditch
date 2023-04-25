@@ -3,11 +3,14 @@ import { NavLink } from 'react-router-dom';
 
 
 const MenuNavigationHeader = () => {
+
     return (
         <div>
             <div className='headerNavigation'>
                 <h1> Gestus 2000 </h1>
-                <button className='loginButton' onClick={() => window.location.href = '/'}> Se deconnecter </button>
+                <NavLink to="/">
+                    <button className='loginButton'> Se deconnecter </button>
+                </NavLink>
             </div>
             <div className="navigation">
                 <ul>
