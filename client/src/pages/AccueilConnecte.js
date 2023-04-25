@@ -3,7 +3,7 @@ import MenuNavigationHeader from '../components/MenuNavigationHeader';
 import AccueilMainContent from '../components/AccueilMainContent';
 
 const AccueilConnecte = () => {
-    if(localStorage.getItem('session') === '') {
+    if(localStorage.getItem('session') === null) {
         window.location.href = '/'
     }
     return (
