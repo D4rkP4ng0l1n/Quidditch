@@ -25,8 +25,8 @@ const FormLogin = () => {
         <form className='authentification' onSubmit={handleSubmit}>
             Identifiant <input type="text" className='formInput' value={identifiant} onChange={(e) => setIdentifiant(e.target.value)} />
             Mot de passe <input type="password" className='formInput' value={motDePasse} onChange={(e) => setMotDePasse(e.target.value)} />
-            <input type="submit" value="Login"/>
-            <input type="button" value="Retour" onClick={() => window.location.href = '/'}/>
+            <input type="submit" value="Login" />
+            <input type="button" value="Retour" onClick={() => window.location.href = '/'} />
             {messageErreur && <p>{messageErreur}</p>}
         </form>
     );

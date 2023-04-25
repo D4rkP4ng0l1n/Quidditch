@@ -8,16 +8,17 @@ import AfficherMatchs from './pages/AfficherMatchs';
 import PageConnexion from './pages/PageConnexion';
 
 const App = () => {
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<AccueilNonConnecte />} />
+        <Route path='/login' element={<PageConnexion />} />
+        <Route path='*' element={<AccueilNonConnecte />} />
         <Route path='/home' element={<AccueilConnecte />} />
         <Route path='/joueurs' element={<AfficherJoueurs />} />
         <Route path='/matchs' element={<AfficherMatchs />} />
         <Route path='/statistiques' element={<Statistiques />} />
-        <Route path='/login' element={<PageConnexion />} />
-        <Route path='*' element={<AccueilNonConnecte />} />
       </Routes>
     </BrowserRouter>
   )
