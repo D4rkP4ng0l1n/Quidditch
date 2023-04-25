@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use('/joueur', RouteJoueur);
 app.use('/match', RouteMatch);
 app.use('/participation', RouteParticipation)
-app.use('/upload', RouteUppload)
+app.use('/upload', RouteUpload)
 
 
 module.exports = app;

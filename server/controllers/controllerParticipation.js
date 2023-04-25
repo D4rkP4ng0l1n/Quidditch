@@ -20,3 +20,34 @@ exports.addParticipations = (req, res) => {
             return res.status(400).json({ error });
         });
 };
+
+// PARTIE GET
+
+exports.getAllParticipations = (req, res) => {
+    Participation.find()
+        .then((participation) => {
+            return res.status(200).json({ participation });
+        }).catch((error) => {
+            return res.status(400).json({ error });
+        });
+};
+
+exports.getAllParticipationsForOnePlayer = (req, res) => {
+    const id = req.params.idJoueur;
+    Participation.find({ idJoueur: id })
+        .then((participation) => {
+            return res.status(200).json({ participation });
+        }).catch((error) => {
+            return res.status(400).json({ error });
+        });
+};
+
+exports.getAllParticipationsForOneMatch = (req, res) => {
+    const id = req.params.idMatch;
+    Participation.find({ idMatch: id })
+        .then((participation) => {
+            return res.status(200).json({ participation });
+        }).catch((error) => {
+            return res.status(400).json({ error });
+        });
+};
