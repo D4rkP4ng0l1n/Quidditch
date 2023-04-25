@@ -50,6 +50,7 @@ exports.getAllParticipationsForOneMatch = (req, res) => {
         }).catch((error) => {
             return res.status(400).json({ error });
         });
+
 };
 
 // PARTIE DELETE
@@ -79,5 +80,4 @@ exports.updateAllParticipationsForOneMatch = (req, res) => {
         return res.status(400).json({ error });
     });
 };
-
 

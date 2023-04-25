@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const SelectFeuilleMatch = ({ changerComponentAffiche, idMatch }) => {
+
   const [joueurs, setJoueurs] = useState([]);
   const [idJoueursChecked, setIdJoueursChecked] = useState([]);
   const [idJoueursTitulaires, setIdJoueursTitulaires] = useState([]);
@@ -21,8 +22,8 @@ const SelectFeuilleMatch = ({ changerComponentAffiche, idMatch }) => {
     setIdJoueursTitulaires(joueurs.map(joueur => joueur._id));
   }, [joueurs]);
 
-  const handleCheck = (e, idJoueur) => { 
-    if(e.target.checked) {
+  const handleCheck = (e, idJoueur) => {
+    if (e.target.checked) {
       setIdJoueursChecked(idJoueursChecked.concat(idJoueur));
     } else {
       setIdJoueursChecked(idJoueursChecked.filter(id => id !== idJoueur));
@@ -30,17 +31,17 @@ const SelectFeuilleMatch = ({ changerComponentAffiche, idMatch }) => {
   };
 
   const handleTitulaire = (e, idJoueur) => {
-    if(e.target.value === 'remplacant') {
+    if (e.target.value === 'remplacant') {
       setIdJoueursTitulaires(idJoueursTitulaires.filter(id => id !== idJoueur));
-    } else if(e.target.value === 'titulaire') {
+    } else if (e.target.value === 'titulaire') {
       setIdJoueursTitulaires(idJoueursTitulaires.concat(idJoueur));
     }
   };
 
   const checkNbTitulaire = () => {
     let nbTitulaires = 0;
-    for(let idJoueurChecked of idJoueursChecked) {
-      if(idJoueursTitulaires.includes(idJoueurChecked)) {
+    for (let idJoueurChecked of idJoueursChecked) {
+      if (idJoueursTitulaires.includes(idJoueurChecked)) {
         nbTitulaires++;
       }
     }
@@ -50,45 +51,45 @@ const SelectFeuilleMatch = ({ changerComponentAffiche, idMatch }) => {
   const creerListeJoueursAAjouter = () => {
     let nouveauxJoueurs = [];
     for (let idJoueurChecked of idJoueursChecked) {
-        let etatJoueur = 'remplacant';
-        if (idJoueursTitulaires.includes(idJoueurChecked)) {
-            etatJoueur = 'titulaire';
-        }
-        const joueur = {
-            idJoueur: idJoueurChecked,
-            poste: etatJoueur
-        };
-        nouveauxJoueurs.push(joueur);
+      let etatJoueur = 'remplacant';
+      if (idJoueursTitulaires.includes(idJoueurChecked)) {
+        etatJoueur = 'titulaire';
+      }
+      const joueur = {
+        idJoueur: idJoueurChecked,
+        poste: etatJoueur
+      };
+      nouveauxJoueurs.push(joueur);
     }
     return Promise.resolve(nouveauxJoueurs);
   };
 
-const creerFeuilleDeMatch = async (e) => {
+  const creerFeuilleDeMatch = async (e) => {
     e.preventDefault();
 
     if (checkNbTitulaire()) {
-        setErreur('Veuillez sélectionner 7 joueurs titulaires');
-        return;
+      setErreur('Veuillez sélectionner 7 joueurs titulaires');
+      return;
     }
     setErreur('');
 
     const joueursAAjouter = await creerListeJoueursAAjouter();
 
     axios
-        .post('http://localhost:5000/participation/' + idMatch, joueursAAjouter)
-        .then((response) => {
-            console.log('Response:', response.data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+      .post('http://localhost:5000/participation/' + idMatch, joueursAAjouter)
+      .then((response) => {
+        console.log('Response:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
 
     setIdJoueursChecked('');
     setIdJoueursTitulaires('');
     setJoueurs('');
 
     changerComponentAffiche('ListeDesMatchs');
-};
+  };
 
 
 
@@ -123,7 +124,7 @@ const creerFeuilleDeMatch = async (e) => {
                     <option value='remplacant'>Remplaçant</option>
                   </select>
                 </td>
-                <td><input type='checkbox' onChange={(e) => handleCheck(e, joueur._id)}/></td>
+                <td><input type='checkbox' onChange={(e) => handleCheck(e, joueur._id)} /></td>
               </tr>
             ))}
           </tbody>

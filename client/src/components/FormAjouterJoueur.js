@@ -4,6 +4,8 @@ import axios from 'axios';
 
 const FormAjouterJoueur = ({ handleShowFormChange, handleModifJoueurChange, joueur }) => {
 
+    const [msgErreur, setMsgErreur] = useState('');
+
     const [nom, setNom] = useState('');
     const [prenom, setPrenom] = useState('');
     const [numLicence, setNumLicence] = useState('');
@@ -92,7 +94,7 @@ const FormAjouterJoueur = ({ handleShowFormChange, handleModifJoueurChange, joue
                 handleModifJoueurChange(false);
             }
         } else {
-            console.log('Veuillez remplir tous les champs du formulaire.');
+            setMsgErreur('Veuillez remplir tous les champs du formulaire.');
         }
     };
 
@@ -139,6 +141,10 @@ const FormAjouterJoueur = ({ handleShowFormChange, handleModifJoueurChange, joue
                             handleModifJoueurChange(false);
                         }
                     }} />
+                    {
+                        msgErreur !== '' ?
+                            <p> {msgErreur} </p> : null
+                    }
                 </form>
             </section>
         </article>
